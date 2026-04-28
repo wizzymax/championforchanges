@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Champions for Changes | Empowering Communities. Inspiring Change.</title>
+<meta name="description" content="Champions for Changes is a Tanzanian NGO founded by Scola Sumary, focused on youth empowerment, community development, and social change in Arusha and beyond."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #C8860A;
+    --gold-light: #F2A830;
+    --gold-pale: #FDF3E3;
+    --amber: #E07B00;
+    --warm-white: #FEFCF7;
+    --charcoal: #1A1A18;
+    --brown: #3D2B1F;
+    --brown-mid: #6B4226;
+    --soft-gray: #F5F0EB;
+    --text-body: #3A3530;
+    --text-muted: #7A6F65;
+    --accent-teal: #1A7A6E;
+    --accent-teal-light: #E8F5F3;
+    --radius: 12px;
+    --shadow: 0 4px 32px rgba(0,0,0,0.08);
+    --shadow-gold: 0 8px 40px rgba(200,134,10,0.18);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-body);
+    overflow-x: hidden;
+  }
+
+  h1,h2,h3,h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+
+  img { max-width: 100%; display: block; }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 5%;
+    background: rgba(254,252,247,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,134,10,0.12);
+    transition: box-shadow .3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.08); }
+
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .nav-logo img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+  .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--brown); line-height: 1.1; }
+  .nav-logo-text span { color: var(--gold); display: block; }
+
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { font-size: .9rem; font-weight: 500; color: var(--text-body); transition: color .2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold); color: #fff;
+    padding: 10px 22px; border-radius: 50px;
+    font-weight: 600; font-size: .9rem;
+    transition: background .2s, transform .2s;
+  }
+  .nav-cta:hover { background: var(--amber); transform: translateY(-1px); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 24px; height: 2px; background: var(--brown); border-radius: 2px; transition: all .3s; }
+
+  /* ─── MOBILE NAV ─── */
+  .mobile-nav {
+    display: none; position: fixed; top: 77px; left: 0; right: 0; z-index: 99;
+    background: var(--warm-white); padding: 20px 5% 30px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    flex-direction: column; gap: 16px;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { font-size: 1rem; font-weight: 500; padding: 8px 0; border-bottom: 1px solid rgba(200,134,10,0.1); color: var(--text-body); }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 80px 5%; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 12px;
+  }
+  .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--brown); margin-bottom: 18px; }
+  .section-subtitle { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; max-width: 580px; }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh; padding-top: 77px;
+    background:
+      radial-gradient(ellipse at 60% 50%, rgba(200,134,10,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 10% 80%, rgba(200,134,10,0.07) 0%, transparent 50%),
+      var(--warm-white);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute; inset: 0; pointer-events: none; opacity: .04;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C8860A' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .hero-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items: center; max-width: 1200px; margin: 0 auto; width: 100%;
+    padding: 60px 0;
+  }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(200,134,10,0.1); border: 1px solid rgba(200,134,10,0.25);
+    padding: 7px 16px; border-radius: 50px;
+    font-size: .8rem; font-weight: 600; color: var(--gold); letter-spacing: .06em;
+    margin-bottom: 24px;
+    animation: fadeUp .6s ease both;
+  }
+  .hero-tag .dot { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 5.5vw, 4rem); color: var(--brown);
+    margin-bottom: 20px; line-height: 1.12;
+    animation: fadeUp .7s .1s ease both;
+  }
+  .hero-title .highlight { color: var(--gold); position: relative; display: inline-block; }
+  .hero-title .highlight::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 3px;
+    background: var(--gold-light); border-radius: 2px;
+  }
+
+  .hero-desc {
+    font-size: 1.1rem; color: var(--text-muted); line-height: 1.75;
+    margin-bottom: 36px; max-width: 480px;
+    animation: fadeUp .7s .2s ease both;
+  }
+
+  .hero-actions {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    animation: fadeUp .7s .3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--gold); color: #fff;
+    padding: 14px 30px; border-radius: 50px;
+    font-weight: 600; font-size: .95rem;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: background .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 4px 20px rgba(200,134,10,0.3);
+  }
+  .btn-primary:hover { background: var(--amber); transform: translateY(-2px); box-shadow: var(--shadow-gold); }
+
+  .btn-secondary {
+    background: transparent; color: var(--brown);
+    padding: 14px 30px; border-radius: 50px;
+    font-weight: 600; font-size: .95rem; border: 2px solid rgba(61,43,31,0.2);
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all .2s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  .btn-outline-teal {
+    background: transparent; color: var(--accent-teal);
+    padding: 12px 26px; border-radius: 50px;
+    font-weight: 600; font-size: .9rem; border: 2px solid var(--accent-teal);
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all .2s;
+  }
+  .btn-outline-teal:hover { background: var(--accent-teal); color: #fff; transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 32px; margin-top: 44px;
+    animation: fadeUp .7s .4s ease both;
+  }
+  .hero-stat-item { text-align: left; }
+  .hero-stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--gold); }
+  .hero-stat-label { font-size: .8rem; color: var(--text-muted); font-weight: 500; }
+
+  .hero-visual {
+    position: relative;
+    animation: fadeIn .9s .3s ease both;
+  }
+
+  .hero-card-main {
+    background: #fff; border-radius: 20px;
+    box-shadow: var(--shadow-gold);
+    overflow: hidden; aspect-ratio: 4/5;
+    background: linear-gradient(145deg, #f9d994 0%, #e8a84c 40%, #c07020 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+
+  .hero-card-main-inner {
+    text-align: center; padding: 40px;
+    color: #fff;
+  }
+
+  .hero-heart-hands {
+    width: 140px; height: 140px; margin: 0 auto 20px;
+    background: rgba(255,255,255,0.15); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 70px;
+  }
+
+  .hero-card-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700; line-height: 1.3;
+    color: #fff; margin-bottom: 12px;
+  }
+
+  .hero-card-sub { font-size: .9rem; color: rgba(255,255,255,0.8); }
+
+  .hero-floating-badge {
+    position: absolute; bottom: -20px; left: -30px;
+    background: #fff; border-radius: 16px; padding: 14px 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .badge-icon { width: 40px; height: 40px; background: var(--gold-pale); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .badge-text strong { display: block; font-size: .85rem; color: var(--brown); font-weight: 600; }
+  .badge-text span { font-size: .75rem; color: var(--text-muted); }
+
+  .hero-floating-badge2 {
+    position: absolute; top: 20px; right: -24px;
+    background: var(--gold); border-radius: 14px; padding: 12px 18px;
+    box-shadow: var(--shadow-gold);
+    color: #fff; text-align: center;
+  }
+  .badge2-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; }
+  .badge2-label { font-size: .7rem; font-weight: 500; opacity: .85; }
+
+  /* ─── MISSION BANNER ─── */
+  #mission-banner {
+    background: var(--brown);
+    padding: 50px 5%;
+  }
+  .mission-inner {
+    max-width: 900px; margin: 0 auto; text-align: center;
+  }
+  .mission-inner p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    color: var(--gold-light); line-height: 1.6; font-style: italic;
+  }
+  .mission-inner span { color: #fff; }
+
+  /* ─── IMPACT STATS ─── */
+  #impact { background: var(--soft-gray); }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 50px;
+  }
+  .stat-card {
+    background: #fff; border-radius: var(--radius); padding: 32px 24px;
+    text-align: center; box-shadow: var(--shadow);
+    border-top: 3px solid transparent;
+    transition: transform .3s, box-shadow .3s;
+    position: relative; overflow: hidden;
+  }
+  .stat-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-gold); border-top-color: var(--gold); }
+  .stat-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(200,134,10,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .stat-icon { font-size: 2.2rem; margin-bottom: 12px; }
+  .stat-num {
+    font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 900;
+    color: var(--gold); margin-bottom: 6px;
+  }
+  .stat-label { font-size: .9rem; color: var(--text-muted); font-weight: 500; }
+
+  /* ─── PROGRAMS ─── */
+  #programs { background: var(--warm-white); }
+  .programs-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 16px; }
+
+  .programs-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+
+  .program-card {
+    background: #fff; border-radius: 18px; overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .program-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-gold); }
+
+  .program-img {
+    height: 200px; position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 60px;
+  }
+  .program-img.edu { background: linear-gradient(135deg, #FFF3D1 0%, #F2A830 100%); }
+  .program-img.health { background: linear-gradient(135deg, #D1F0EC 0%, #1A7A6E 100%); }
+  .program-img.women { background: linear-gradient(135deg, #FFE4E8 0%, #D45E75 100%); }
+  .program-img.youth { background: linear-gradient(135deg, #E8E4FF 0%, #6B5DD3 100%); }
+  .program-img.food { background: linear-gradient(135deg, #DFFFD1 0%, #47A042 100%); }
+  .program-img.arts { background: linear-gradient(135deg, #FFE9CC 0%, #E07B00 100%); }
+
+  .program-tag {
+    position: absolute; top: 14px; left: 14px;
+    background: rgba(255,255,255,0.9); backdrop-filter: blur(8px);
+    padding: 5px 12px; border-radius: 50px;
+    font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--brown);
+  }
+  .program-body { padding: 24px; }
+  .program-body h3 { font-size: 1.15rem; color: var(--brown); margin-bottom: 10px; }
+  .program-body p { font-size: .9rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 16px; }
+
+  .program-impact {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--gold-pale); border-radius: 8px; padding: 8px 12px;
+    font-size: .82rem; color: var(--brown-mid); font-weight: 600;
+  }
+  .program-impact::before { content: '✦'; color: var(--gold); }
+
+  /* ─── ABOUT / FOUNDER ─── */
+  #about { background: var(--soft-gray); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+  .about-visual { position: relative; }
+
+  .founder-card {
+    background: linear-gradient(145deg, #C8860A 0%, #3D2B1F 100%);
+    border-radius: 20px; padding: 48px 36px; color: #fff;
+    position: relative; overflow: hidden;
+  }
+  .founder-card::before {
+    content: '"'; position: absolute; top: -20px; right: 20px;
+    font-size: 120px; font-family: 'Playfair Display', serif;
+    color: rgba(255,255,255,0.08); line-height: 1;
+  }
+  .founder-avatar {
+    width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px; margin-bottom: 20px;
+    border: 3px solid rgba(255,255,255,0.3);
+  }
+  .founder-card h3 { font-size: 1.4rem; margin-bottom: 6px; }
+  .founder-card .role { font-size: .85rem; color: var(--gold-light); margin-bottom: 18px; font-weight: 500; }
+  .founder-card p { font-size: .95rem; line-height: 1.7; color: rgba(255,255,255,0.85); }
+
+  .about-float-badge {
+    position: absolute; bottom: -16px; right: -20px;
+    background: #fff; border-radius: 14px; padding: 14px 18px;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+  .about-float-badge .num { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); font-weight: 900; }
+  .about-float-badge .lbl { font-size: .75rem; color: var(--text-muted); font-weight: 500; }
+
+  .values-list { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+  .value-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: #fff; border-radius: 12px; padding: 16px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    transition: transform .2s;
+  }
+  .value-item:hover { transform: translateX(6px); }
+  .value-icon { width: 38px; height: 38px; min-width: 38px; background: var(--gold-pale); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .value-text strong { display: block; font-size: .95rem; color: var(--brown); margin-bottom: 3px; }
+  .value-text span { font-size: .83rem; color: var(--text-muted); }
+
+  /* ─── TESTIMONIALS ─── */
+  #testimonials { background: var(--brown); padding: 80px 5%; }
+  .testimonials-header { text-align: center; margin-bottom: 50px; }
+  .testimonials-header .section-label { color: var(--gold-light); }
+  .testimonials-header .section-title { color: #fff; }
+
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+  .testimonial-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px; padding: 28px;
+    transition: background .3s;
+  }
+  .testimonial-card:hover { background: rgba(255,255,255,0.1); }
+  .quote-mark { font-size: 2.5rem; color: var(--gold-light); font-family: 'Playfair Display', serif; line-height: .8; margin-bottom: 14px; }
+  .testimonial-text { font-size: .95rem; color: rgba(255,255,255,0.82); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 18px; color: #fff; font-weight: 700; }
+  .author-info strong { display: block; font-size: .88rem; color: #fff; }
+  .author-info span { font-size: .78rem; color: rgba(255,255,255,0.5); }
+  .star-row { color: var(--gold-light); font-size: .8rem; margin-bottom: 12px; }
+
+  /* ─── GET INVOLVED ─── */
+  #get-involved { background: var(--warm-white); }
+  .involved-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .involved-card {
+    border-radius: 18px; padding: 32px 28px;
+    transition: transform .3s, box-shadow .3s;
+    position: relative; overflow: hidden;
+  }
+  .involved-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-gold); }
+  .involved-card.donate { background: var(--gold); color: #fff; }
+  .involved-card.volunteer { background: #fff; border: 2px solid rgba(200,134,10,0.2); }
+  .involved-card.partner { background: var(--brown); color: #fff; }
+  .involved-card .card-icon { font-size: 2.8rem; margin-bottom: 18px; }
+  .involved-card h3 { font-size: 1.25rem; margin-bottom: 10px; }
+  .involved-card.volunteer h3 { color: var(--brown); }
+  .involved-card p { font-size: .9rem; line-height: 1.65; margin-bottom: 22px; }
+  .involved-card.donate p, .involved-card.partner p { color: rgba(255,255,255,0.8); }
+  .involved-card.volunteer p { color: var(--text-muted); }
+
+  .btn-white {
+    background: #fff; color: var(--gold);
+    padding: 11px 24px; border-radius: 50px;
+    font-weight: 700; font-size: .88rem;
+    display: inline-flex; align-items: center; gap: 7px;
+    transition: all .2s;
+  }
+  .btn-white:hover { background: var(--gold-pale); transform: translateY(-1px); }
+
+  .btn-gold {
+    background: var(--gold); color: #fff;
+    padding: 11px 24px; border-radius: 50px;
+    font-weight: 700; font-size: .88rem;
+    display: inline-flex; align-items: center; gap: 7px;
+    transition: all .2s;
+  }
+  .btn-gold:hover { background: var(--amber); transform: translateY(-1px); }
+
+  /* ─── DONATE SECTION ─── */
+  #donate-cta {
+    background: linear-gradient(135deg, #F2A830 0%, #C8860A 50%, #3D2B1F 100%);
+    padding: 80px 5%; text-align: center;
+  }
+  .donate-inner { max-width: 700px; margin: 0 auto; }
+  .donate-inner h2 { color: #fff; font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 16px; }
+  .donate-inner p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 36px; line-height: 1.7; }
+  .donate-amounts { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 32px; }
+  .amount-btn {
+    background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.3);
+    color: #fff; padding: 10px 24px; border-radius: 50px;
+    font-weight: 600; font-size: .95rem; cursor: pointer;
+    transition: all .2s;
+  }
+  .amount-btn:hover, .amount-btn.active { background: #fff; color: var(--gold); border-color: #fff; }
+
+  /* ─── NEWSLETTER ─── */
+  #newsletter { background: var(--soft-gray); }
+  .newsletter-inner {
+    max-width: 600px; margin: 0 auto; text-align: center;
+  }
+  .newsletter-form {
+    display: flex; gap: 12px; margin-top: 28px;
+    background: #fff; border-radius: 60px; padding: 6px 6px 6px 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(200,134,10,0.15);
+  }
+  .newsletter-form input {
+    flex: 1; border: none; outline: none; font-family: 'DM Sans', sans-serif;
+    font-size: .95rem; color: var(--text-body); background: transparent;
+  }
+  .newsletter-form input::placeholder { color: var(--text-muted); }
+  .newsletter-form button {
+    background: var(--gold); color: #fff; border: none; cursor: pointer;
+    padding: 12px 26px; border-radius: 50px; font-weight: 600; font-size: .9rem;
+    font-family: 'DM Sans', sans-serif;
+    transition: background .2s;
+  }
+  .newsletter-form button:hover { background: var(--amber); }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--warm-white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: start; }
+  .contact-info h3 { font-size: 1.5rem; color: var(--brown); margin-bottom: 18px; }
+  .contact-info p { font-size: .95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+  .contact-icon { width: 42px; height: 42px; min-width: 42px; background: var(--gold-pale); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .contact-text strong { display: block; font-size: .85rem; font-weight: 700; color: var(--brown); margin-bottom: 2px; }
+  .contact-text span { font-size: .88rem; color: var(--text-muted); }
+  .social-row { display: flex; gap: 12px; margin-top: 28px; }
+  .social-btn {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .25s; cursor: pointer; color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  .social-btn svg { width:20px; height:20px; }
+  .social-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.2); filter: brightness(1.1); }
+  .social-btn.instagram { background: radial-gradient(circle at 30% 110%, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+  .social-btn.facebook  { background: #1877F2; }
+  .social-btn.twitter   { background: #000; }
+  .social-btn.whatsapp  { background: #25D366; }
+  .social-btn.youtube   { background: #FF0000; }
+  /* Footer dark bg variant */
+  footer .social-btn { opacity:.9; }
+  footer .social-btn:hover { opacity:1; }
+  .social-btn.youtube:hover   { background: #FF0000; color:#fff; }
+  /* footer dark bg variants */
+  .footer-brand .social-btn   { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
+  .footer-brand .social-btn:hover { color:#fff; }
+
+  .contact-form { background: #fff; border-radius: 20px; padding: 36px; box-shadow: var(--shadow); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: .82rem; font-weight: 600; color: var(--brown); margin-bottom: 7px; letter-spacing: .02em; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; border: 1.5px solid rgba(200,134,10,0.2); border-radius: 10px;
+    padding: 12px 16px; font-family: 'DM Sans', sans-serif; font-size: .92rem;
+    color: var(--text-body); background: var(--warm-white); outline: none;
+    transition: border-color .2s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--charcoal); color: rgba(255,255,255,0.7);
+    padding: 60px 5% 30px;
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
+  .footer-brand .nav-logo-text { color: var(--gold-light); font-size: 1.15rem; }
+  .footer-brand .nav-logo-text span { color: #fff; }
+  .footer-brand p { font-size: .88rem; line-height: 1.7; margin-top: 14px; margin-bottom: 20px; }
+  .footer-col h4 { font-family: 'DM Sans', sans-serif; font-size: .85rem; font-weight: 700; color: #fff; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 16px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .footer-links li a { font-size: .88rem; color: rgba(255,255,255,0.6); transition: color .2s; }
+  .footer-links li a:hover { color: var(--gold-light); }
+  .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: .85rem; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px; margin-top: 50px; max-width: 1200px; margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; gap: 12px; }
+  .footer-bottom p { font-size: .82rem; }
+  .footer-bottom a { color: var(--gold-light); }
+
+  /* ─── PAGE SECTIONS ─── */
+  .page-hero {
+    background: linear-gradient(135deg, var(--brown) 0%, #2A1810 100%);
+    padding: 130px 5% 70px; text-align: center;
+  }
+  .page-hero h1 { color: #fff; font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 14px; }
+  .page-hero p { color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+  .breadcrumb { display: flex; align-items: center; gap: 8px; justify-content: center; margin-bottom: 20px; font-size: .82rem; color: rgba(255,255,255,0.5); }
+  .breadcrumb a { color: var(--gold-light); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── TABS ─── */
+  .tab-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; }
+  .tab-btn {
+    padding: 9px 20px; border-radius: 50px; border: 2px solid rgba(200,134,10,0.2);
+    background: transparent; font-family: 'DM Sans', sans-serif;
+    font-size: .88rem; font-weight: 600; color: var(--text-muted); cursor: pointer;
+    transition: all .2s;
+  }
+  .tab-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .tab-btn.active { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeUp .4s ease; }
+
+  /* ─── DIVIDER ─── */
+  .divider-wave {
+    height: 60px; overflow: hidden;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .programs-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+    .hero-desc { max-width: 100%; }
+    .hero-actions { justify-content: center; }
+    .hero-stats { justify-content: center; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .involved-grid { grid-template-columns: repeat(2, 1fr); }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-floating-badge2 { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    section { padding: 60px 5%; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .programs-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .involved-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .hero-floating-badge { display: none; }
+    .newsletter-form { flex-direction: column; border-radius: 14px; padding: 16px; }
+    .newsletter-form button { border-radius: 10px; }
+  }
+
+  /* ─── SCROLL TO TOP ─── */
+  #scrollTop {
+    position: fixed; bottom: 28px; right: 28px; z-index: 200;
+    width: 46px; height: 46px; background: var(--gold); border: none;
+    border-radius: 50%; color: #fff; font-size: 20px; cursor: pointer;
+    box-shadow: var(--shadow-gold); display: none;
+    align-items: center; justify-content: center;
+    transition: background .2s, transform .2s;
+  }
+  #scrollTop.visible { display: flex; }
+  #scrollTop:hover { background: var(--amber); transform: scale(1.08); }
+
+  /* Impact counter animation */
+  .counter { display: inline-block; }
+
+  .social-btn.instagram:hover { background: radial-gradient(circle at 30% 110%, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important; color: #fff !important; }
+  .social-btn.facebook:hover { background: #1877F2 !important; color: #fff !important; }
+  .social-btn.twitter:hover { background: #000 !important; color: #fff !important; }
+  .social-btn.whatsapp:hover { background: #25D366 !important; color: #fff !important; }
+  .social-btn.youtube:hover { background: #FF0000 !important; color: #fff !important; }
+  .social-btn.tiktok:hover { background: #000 !important; color: #fff !important; }
+  .social-btn svg { display: block; }
+
+
+  /* ── BRAND SOCIAL COLORS ── */
+  .social-btn { color: #888; transition: all .25s; }
+  .social-btn.instagram { background: #fef0f5; color: #C13584; }
+  .social-btn.instagram:hover { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:#fff; transform:translateY(-3px); box-shadow:0 6px 20px rgba(193,53,132,.35); }
+  .social-btn.facebook { background: #eef2fb; color: #1877F2; }
+  .social-btn.facebook:hover { background: #1877F2; color:#fff; transform:translateY(-3px); box-shadow:0 6px 20px rgba(24,119,242,.35); }
+  .social-btn.twitter { background: #f0f0f0; color: #000; }
+  .social-btn.twitter:hover { background: #000; color:#fff; transform:translateY(-3px); box-shadow:0 6px 20px rgba(0,0,0,.25); }
+  .social-btn.whatsapp { background: #edfaf3; color: #25D366; }
+  .social-btn.whatsapp:hover { background: #25D366; color:#fff; transform:translateY(-3px); box-shadow:0 6px 20px rgba(37,211,102,.35); }
+  .social-btn.youtube { background: #fff0f0; color: #FF0000; }
+  .social-btn.youtube:hover { background: #FF0000; color:#fff; transform:translateY(-3px); box-shadow:0 6px 20px rgba(255,0,0,.3); }
+
+  /* Footer social override – slightly lighter bg */
+  footer .social-btn.instagram { background: rgba(255,255,255,0.08); color: #f56daa; }
+  footer .social-btn.facebook  { background: rgba(255,255,255,0.08); color: #6fa3f7; }
+  footer .social-btn.twitter   { background: rgba(255,255,255,0.08); color: #ccc; }
+  footer .social-btn.whatsapp  { background: rgba(255,255,255,0.08); color: #5de89b; }
+  footer .social-btn.youtube   { background: rgba(255,255,255,0.08); color: #ff6b6b; }
+
+  /* Founder photo circle */
+  .founder-photo-wrap {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.35);
+    overflow: hidden;
+    margin-bottom: 18px;
+    background: rgba(255,255,255,0.15);
+    flex-shrink: 0;
+  }
+  .founder-photo-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+    display: block;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCACWAJYDASIAAhEBAxEB/8QAHQAAAQQDAQEAAAAAAAAAAAAAAAEFBgcDBAgCCf/EAEsQAAAFAgMEBAoFCQcEAwAAAAABAgMEBQYREhMHISIxFCMyQQgVM0JRUmFicYFDU3KhsRY0Y3N0gpHB0iRFkpWissImVIOEs9Hw/8QAGgEAAwEBAQEAAAAAAAAAAAAAAAIDBAEFBv/EAC4RAAICAQIFAwIFBQAAAAAAAAABAgMRBBIFEyExQSJhgVFxFSMykfAzQqGx4f/aAAwDAQACEQMRAD8A7DAAAAAAAAAAAGB6Shscbx3OpZM4TEMNUr0eK2pa1oSIy3tCpyp/R+kIEXfArGib8Fi4gGhS5zUxhLyF5hviyeSTWAAGiuVuJS2FLdXlEfpt/UyU/o6yArnFdMjqqbWUibgGtDnMym87K8w2Q5PAAAAAAAAAAAAAAAAAAAAAAAAYJWrp9SjN+8QilcjXM5m6JTtT/wBhBfiYmQBGylT7srC3Z2Rz1eFrbWqpmTEobWX9vZL/AJCExdk22BuX0hdGb/zFn+oddjWcnRm31NZ9V5PaQ2nMZfHDl88BnnpK/LZqr11i6JIrfZzTL8pbaWqtTEpT+1Nq/AxYcpU7onVR8znq5i/+xnjydZtKkMr01dlWZBl9xmM401wxHCZlss3Sy0ij9o9tbSq5mRT6S1pftjSfxMVtF2VbY4svWaozX+Ys/wBQ63U4hK0pWtCVL4UpUrmfs9I9CMtJCTzlmiGunBbVFYKYsembUqblRUaG1l/bmj/mLUpbtT009Liaav1iT/Aw5gF4V7TPZbv64QgUABQkIAAAAKAAAAAQKEAABRjz9YlAyAAABBS/hR39ItOyXWqZL6NPnvdDiL9VWGZ134ITu+0oSut5ayVpqds1FDxtI2oW/bPW1GsOx2VN5W4kfilTFfoUFvSXcbhmRej0jmTaPthuC7zXS47R0qiH/dcJzLn/AF7pb1n6UluFcx+kVie5k1VavlH3lZn5HtWs9/7pbi5Cz7dtRml6aGo/S6i42lxKcvVM5uzm71H3kki3+nAfN6vX8rv3Z9VouFx7jnsD2qPWHL8Wy0SHaC+vr4Xbchq73GfWT6yOfeWPf1Jdd/23b1mNXQ7ORLhyUJ6CUbjXMUssUJb9OP3FvMcnTLdmyn+j1WmdEfc8nP01M9d5ucscqc3rFhxBFWrW5UCBClyJHRGOkabbm5uGlSkqf+zmPiP5kEo43y63GXwNquBxssUk/uMu02+KtedyeOKjnfks/mkaLIUlmCj3Fp3qc9KuWPp7pzsr8Iyv0E26ZdzUiuU5PDr7unMl9xPl/BQaaXQqn/dlBaZhfWPR1qcea971Mxb+EsSDHdlqRJER+XBadYcZw1WXN5ox5GSk7lJ54K3cuQjTxfbYareE1Sr24O0rJvK2L0pPjC2azFqLP0mmrrG/YtB8SD9hkQfh80YNUqdv1np0GXIgVFnyE+OrK6hRevh5RB8jI8f5H35sYvZq/tnVLuHgTLdb0prSfopCOFwvhjvL2KIfUabVc4+T1uhlp+vgmQAAGowAAa8N5DzecbA4nk61gABQDpwB4cVlHsQ3aJdLVBpri1r80ck8DRjl4Nnx2yq8IVMQvid1P9KDMSkcp7Jr2duTwi6PHz9XklfcwsdVidUtyK317Gl7CKWhPnozZc2XN6P5D59+EPeyL42kyehPalHpeMOB6HcFYuvfvrxP4ZR0P4W21Bq07YctijzScr1baMsycM8OIrhWrEt/HhlT+8fmkOM4KeyMest8HpcNox62WJsvpLs6fkj5NZKerzcs3dj/AAMTWTfFSKX+SlmQnZE2U6aekZc0mSr0+wsORFyIRPZPUPFtyxpekt+N2X22/KJT6xJ87D2e0hOLmsyRSK6zWKPIdS1rJdjS4riUue7gr0Yc/vHylir57dp9NKU9ijE09mi69Vas5HkvOxlJx12NE1+bxFpq5n6yfmQtipUW4HLYpGeRk11u639l1cu9Onwd+GAbdkkS3oMtjWhVgp7is+Z9aOMz87ljvF8VR6n+JlGvibW2rDTwzH6cB58KVqebLeo7V0Xyv58mXWa+yicI7cnFqGrzl37HptHkvzKmt3g6w/ipWPLAg8wrum3e/wCJqnB6JXG87Tb7acDWv6p1PJRGfzIw87RINuyKr0ijNVluY3xIeQ81wfMa+z212aPqXJUcsSNEbJaftcklh3rM+4WqnVZT6l6vY1uc1Pf/AIKi2hU/oNWfa/8A3My/kLF8D2+F0W7JVoyHuoq3Xw/R0tsuz/5EYp+KUiub+nu1CtSZbrWhqK6tlXbQkuzj8hDkvyIc9idEeWxJYcS6y8320OJPMlRe0jLEfQcPk4RWTBr4K3KPqOy6h5tLrPElScyfmPYrTwe9oMTaJZvjFORuewltuosfVv5cFGReookkovmXcLLSPoqp74ZPkrIbJ7SA7NbkZqkTt8WY/wARPU8xxPsZ2grpddcjvPcOu5/uMdg2vV2atAbdZX2kiOnl0L6mrax4AFANRkBQo7wjqbLkUlxbXqi8RHr0ozNWpLjK0ZuEJZHKaK1T2zTONPBWZdZ8Iuj631Uv/wCBY7Qv+ZWKfY9cnUFppyrRoLzsRtxOZCnUoNSSw7+XIc9bMLMdoPhD0mXpdVklfeysdQiOnj6GjRrJ5sT9j5b1ep1Ov1mTW6xNdnz5i87r73aWf8sC3ERbiLcQ8N50+YLh8JPZNKsW7X6xTI//AE1UnTcYWnsxHFb1MK9G/en0lu5pE22I+D29VqM3cF3Z4jb6dSNCy9cpPrLx7BH3J5+1I82yuzc4pZPYrvphWpt4Rz7S50uG4l5lC+H3TFoWrtklwWOg1ZLVRifVvdr5K5kOoKRbRWtFREpltUsmW+S9DPn+0repCvkZDPU6bZlxxVRbqsuGecvpIiHS/dWgsxfcPOnpqbf6z2v5/wBlfxLb+iO5fcrSzK1QL266i1J9ExprJ0N1zrUoLubVyNP3iaPsS36PAhSDfc0ye8irKrMeGT+BisLv2Ks2hVvyrsGbUHKS1xvQmHc78P30d60e6e8vhyf7pvxc6wYUaLI06hO12H346eNempCOqL1l6ifhxDxNVwnZY9r7r9+qNMb+eoOH1/boxsue6rUtDpMSXN8YzXsqn40fLkzF66/j6oqa+Nrs6rMdBj6UKInybTPD9/M/4i0tnfg5U92T4+2jypTpOcbFJS5l4f0yk7zV7qcPafcLYj0SwqEyceh7OYStPzvFzTZfNxzePVo4XRTBcyXX6f8ACFnE8T/Lju9zgmRMXK4xpvI9dA7nvCgW5W6V0SXZ9Ncq8ndDYgbls4+etacu75YfLeOcNsOyKs2YwzWMGJ9Md6tx+LvQw59WsvNP3uR+w+e+teEuiFWojb3eGyJ7Erlum1NpNJdtZeaTPktQ3oivJSULWRZVl88SVzLn6cfo/wBw5K8D7ZbIkVpO0GsxtOJEzJpaXPpnT4VO/ZSWJEfeZ7uyOtC5D2dKnsPE18oO3C8HzQoLEhy6HNH/ALlf+8x3TsViSI9vM6vqjnXY7Ybsy4XJDzPDrq/3GOvbfgIgwG2keakLpY+SmusWFEcwAANh5gBFFmCgAAz+JI6a6xU8nWN5v9STIPA8q8okehxI63kwTY8aVFcjy2WX459tDySUk8N+8j3buYqzZjIe2oqn3pWZD/5P9MdjUSmJcU2zpNKyKku5cNRa1Y4ErckuRY7xasw2ksK1ULU2pJpVlSZ7j3Hy3iqNk0KsbPbedtBCKbWoESQ8umy26i211S158jyFcSVJMz3lmErJKLWS1azF47jBUkuWptTo0aXMqFTOiwKpVm4jT6lYpfdyR46c6sMrbaXlZl8svowE4ibUKTUKNSZsCjVCVMqFKKsHD6tCosXDyjq1KJCceSd+Ku7diZMtYsio1eXe1WlV2joq9doiKRT3W1npxEZF6nt4lr/gn5BtPZ3Xei3TAg3Nb8WNXqJEgdSS88dbMfR00b9zR/4uI9wjzEyu2Mu4/ubXbccYjSU0OsqckUA68wjRbS4cfNw+f2jJJq38JFzMa8TabZ7mnIZteZliW89cbL5RGOBssuqlviLrMVYGe5Jmk95jXq2z/otr3ROm1anQ+k27Go6JLKVZYcVls9bDv34mZF9kNd+WVUJcKtSKOUWNFqtEhW7GhvNddDbJ7izZTypRkUagu5R9WBoxg+mR+c2sUAujrmW7VmY0+iP1iJJU2z16GW0uOpTmXjmSlRb1YJPu3c8FvXjTKfajXRqXWLlqFNozdWqjsko6ZMdt1BuoS6rcnWNHJCe5O8+WOO/NnFWuSkVZ6dVKRTKiqjKo1KYQpZxYrC1I11KUZEpSlpRl5cKd2/eFOzZh/ljT4NxUNuNdul0l9DvXQ06CWHUNI5K4U8BmosubeSu9tkO+ELlY6G07tgtWLCrE2m0epS24FJYq6jZbbT0hl1rV71bsqO0a8OaSLMZpxdCvei3LLk2y1bcmq4Rob1UiOob6luVgpGZtZ8eUuJeHL47hGahsjkOWfe1KpU2lsSa+/Fahds2mYEdLSG2F9/ZbXjl9Yb79rTJu0eiXLUJtChVSkvuk5Jpji9adDNCiRGWz6CMy4jUrs7u1uomcaj4LWZQhhCWmUIbbQkkpSlOBERbiIiLcRD2PKeJv+oKNBkI1atsRKO31SPONQkwxs+TGQcSwNKWe4AAAdFAAAAA8/SJHoAAAAwyI0d784jx3P1jZH+I81OQ7FgPSI8dUhxts1JaTzWfoGuReMqY610ho0vtKbUppJllxTh3793twE5TjnYx1F4yV7s8nSdoUydcMNw6VajUlcWmMw20tvT9NWVchxeGZLebclKcOWKjDJVanXqDf1rUqtXFNTCjeM6rOQ1xKehpcS3DacyFi6vM4ncXPlxB72KxqxYdjMWXW6LOW9SXHUMSYreozLbNxS0qJWJEk+LeSsA11emVObfd0Xg50SPNZt1NPoDBzW/zg0urUrn2iUvLj9r4jNzazUo+p/Qfbjuq2bosKjy4jxPUuvyW9D+zq15Gm7nW2hnDOpZ6a08sEliozwESoKdnblSpNVl1uRNyVZVKRGk0pxvPNTrKyO5iw1G9d01KPh4fdGCwKNXLeuO1nmqI2/Gp1pIpkfPNaywZanMzy3eLz8qezieG4FlbPq/Nh2LCr9Ocbap9SqVWrazebUmRJcUvT7Jnwq1D+QObGY3L2Z69Pj3LKhbR7Im02s1Xxs03Do0gmJz8hhbRIUaSUnLmLFeOYsuBHj3DBEv2zZs+sRJzTlNco8REycqpwujk20vsq49+/4ezmK4nWpXI1KOp1KnPv1FF9Kr7kEut6a15NvsZlEhtGRXZPsch5uG1ptytSbqolR8e1h+4YMmtw4nUqbixc2nGQh71VdZxp41dwbmi8n36Flpvmzo/SCMnokhCozXRnICm3njkmpLBIRlxVqGhWBd2U82USO2pkGdBVIgwXYRarjTjTkXQUS0KyqxLv38lFiR8yMVrXrMg1q25FMm2VXnGKu8ciXUHJjaqmiS0lOg728E+cScqsEeqklCc2D44pVkUeJeFSjyK41GS3Ldzlitf/ACVhhiZczxMUg19MEZ9iSgCJ4uMKLkDyz5MegdkAAFAEAABQAAAAAPH0g9gAbW11zT449Nze68vD8BiU3VJHBLp9Lc4frFHxYH6U8scA7ACuOe53JE37c1/zi2reeV+kUo/+JhybpnQ0N+L6JRmlfSbtPuLlgj04h6AF5Va8IbmSfkb2l1jPviwMvuvK9uG7L9kY0+OyPP0KlZvSlxf9PoG3MgRJn5wzmV6yVGlX+JJkf3jXbolPS5nyyHP10p1wv4KUZBLN39qT/n2Oxx5GmN0inT5K2kw3HpLuq+t5xw1/ZLBJ8JdxchljUt1isT6xEiMPOVPLrqkOGnhb3NJJOXlgajPHfiYkCEEjgTgn7O4ehyqrC9WBpWEedpC3ZHXUWkGnN9YrHDd7uHpGzHhS4WboVMpDKv0eKc3zIsfiHgArGuEeyEc5Pua0E5ykK6c1HaVuy6Lhq+PMi9g2QBQ4ggB5SY9AAAAAABRglLWnsDOEUWYADX0h4Y9Z31A6aSAaKBxxyNuGeRrODS6ItXriS6SAaKAjqTGVjQzNxMrYXjT5gedJA8OMoBy0g3tjalfuBNZYzPNLT2BiSh4SnLb4HSyacrWU5nHrDWYyBzTEzdsZW4iEidcZNvp0GlMZIcRcf1hsOJWoPOkgGkgaVUibtYzNsLGXF5sOukgJpIDKCQrnk1obi1dsbo8pQhI9BhWAAoAHAAAAAAAAAAQKAAAEAAAADAJk9oAAGFwAAABRQAAAAAAAAAAAAAAAAAD/2Q==" style="width:52px;height:52px;border-radius:10px;object-fit:cover;" alt="Champions for Changes Logo"/>
+    <div class="nav-logo-text">Champions <span>for Changes</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="#hero" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#programs">Programs</a>
+    <a href="#get-involved">Get Involved</a>
+    <a href="#contact">Contact</a>
+    <a href="#donate-cta" class="nav-cta">Donate Now</a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#hero" onclick="closeMenu()">Home</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#programs" onclick="closeMenu()">Programs</a>
+  <a href="#get-involved" onclick="closeMenu()">Get Involved</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="#donate-cta" onclick="closeMenu()" style="color:var(--gold);font-weight:700;">Donate Now ❤️</a>
+</div>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-inner container">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <div class="dot"></div>
+        Based in Arusha, Tanzania
+      </div>
+      <h1 class="hero-title">
+        Empowering<br/>
+        <span class="highlight">Communities.</span><br/>
+        Inspiring Change.
+      </h1>
+      <p class="hero-desc">
+        Champions for Changes is a youth-led NGO rooted in Tanzania, dedicated to uplifting vulnerable communities through education, empowerment, and human dignity.
+      </p>
+      <div class="hero-actions">
+        <a href="#donate-cta" class="btn-primary">❤️ Donate Now</a>
+        <a href="#get-involved" class="btn-secondary">🤝 Get Involved</a>
+        <a href="#programs" class="btn-outline-teal">Our Programs →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">2,500+</div>
+          <div class="hero-stat-label">Lives Impacted</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">12+</div>
+          <div class="hero-stat-label">Active Programs</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">6</div>
+          <div class="hero-stat-label">Communities</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-main">
+        <div class="hero-card-main-inner">
+          <img src="data:image/png;base64,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" style="width:130px;height:130px;border-radius:16px;object-fit:cover;box-shadow:0 8px 32px rgba(0,0,0,0.2);" alt="Champions for Changes"/>
+          <div class="hero-card-quote">"Every child deserves a champion."</div>
+          <div class="hero-card-sub">— Scola Sumary, Founder</div>
+        </div>
+      </div>
+      <div class="hero-floating-badge">
+        <div class="badge-icon">🌍</div>
+        <div class="badge-text">
+          <strong>Tanzania-Based</strong>
+          <span>Serving Arusha & Beyond</span>
+        </div>
+      </div>
+      <div class="hero-floating-badge2">
+        <div class="badge2-num">5★</div>
+        <div class="badge2-label">Community<br>Trust</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MISSION BANNER ── -->
+<div id="mission-banner">
+  <div class="mission-inner">
+    <p>
+      <span>"</span>We believe that every young person, every woman, every child in our community has the power to rise — 
+      <span>and we are here to make sure they never rise alone.</span>"
+    </p>
+  </div>
+</div>
+
+<!-- ── IMPACT STATS ── -->
+<section id="impact">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Our Impact</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;">
+        <h2 class="section-title">Real Change.<br/>Real Numbers.</h2>
+        <p class="section-subtitle">Every statistic represents a life touched, a future brightened, a community transformed through dedicated effort and compassion.</p>
+      </div>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stat-card">
+        <div class="stat-icon">🎓</div>
+        <div class="stat-num">850+</div>
+        <div class="stat-label">Students Supported</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">👩</div>
+        <div class="stat-num">300+</div>
+        <div class="stat-label">Women Empowered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🏘️</div>
+        <div class="stat-num">6</div>
+        <div class="stat-label">Communities Served</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🤝</div>
+        <div class="stat-num">120+</div>
+        <div class="stat-label">Volunteers Mobilized</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROGRAMS ── -->
+<section id="programs">
+  <div class="container">
+    <div class="programs-header reveal">
+      <div>
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Our Programs &<br/>Initiatives</h2>
+      </div>
+      <a href="#get-involved" class="btn-primary">Support a Program →</a>
+    </div>
+
+    <div class="tab-nav reveal">
+      <button class="tab-btn active" onclick="switchTab('all')">All Programs</button>
+      <button class="tab-btn" onclick="switchTab('education')">Education</button>
+      <button class="tab-btn" onclick="switchTab('empowerment')">Empowerment</button>
+      <button class="tab-btn" onclick="switchTab('health')">Health & Welfare</button>
+    </div>
+
+    <div class="programs-grid reveal" id="programsGrid">
+      <div class="program-card" data-cat="education">
+        <div class="program-img edu">
+          <span>📚</span>
+          <div class="program-tag">Education</div>
+        </div>
+        <div class="program-body">
+          <h3>Back to School Initiative</h3>
+          <p>Providing school fees, uniforms, and learning materials to children from low-income families in Arusha. We believe education is the most powerful tool for breaking the poverty cycle.</p>
+          <div class="program-impact">Supported 850+ students since 2021</div>
+        </div>
+      </div>
+
+      <div class="program-card" data-cat="empowerment">
+        <div class="program-img women">
+          <span>💪</span>
+          <div class="program-tag">Women's Power</div>
+        </div>
+        <div class="program-body">
+          <h3>Women Rise Program</h3>
+          <p>Equipping women with vocational skills, business mentorship, and micro-financing opportunities to become financially independent and community leaders in their own right.</p>
+          <div class="program-impact">300+ women trained in business skills</div>
+        </div>
+      </div>
+
+      <div class="program-card" data-cat="health">
+        <div class="program-img health">
+          <span>🏥</span>
+          <div class="program-tag">Health</div>
+        </div>
+        <div class="program-body">
+          <h3>Community Health Outreach</h3>
+          <p>Free health camps, sanitation drives, and hygiene education in underserved communities. Partnering with local clinics to ensure basic healthcare is never out of reach.</p>
+          <div class="program-impact">5,000+ beneficiaries in health camps</div>
+        </div>
+      </div>
+
+      <div class="program-card" data-cat="empowerment">
+        <div class="program-img youth">
+          <span>🌟</span>
+          <div class="program-tag">Youth</div>
+        </div>
+        <div class="program-body">
+          <h3>Youth Champions Club</h3>
+          <p>A mentorship and leadership club for teenagers, building confidence, communication skills, and social responsibility. Young people learn to be champions in their own communities.</p>
+          <div class="program-impact">200+ youth enrolled annually</div>
+        </div>
+      </div>
+
+      <div class="program-card" data-cat="health">
+        <div class="program-img food">
+          <span>🍽️</span>
+          <div class="program-tag">Food Security</div>
+        </div>
+        <div class="program-body">
+          <h3>Hunger Relief Program</h3>
+          <p>Monthly food drives and community kitchens providing nutritious meals to orphaned children, elderly individuals, and families facing extreme food insecurity.</p>
+          <div class="program-impact">400+ families fed every month</div>
+        </div>
+      </div>
+
+      <div class="program-card" data-cat="empowerment">
+        <div class="program-img arts">
+          <span>🎨</span>
+          <div class="program-tag">Arts & Culture</div>
+        </div>
+        <div class="program-body">
+          <h3>Creative Change Lab</h3>
+          <p>Using art, music, drama, and storytelling as tools for healing, self-expression, and social change. We empower youth to speak truth through creativity.</p>
+          <div class="program-impact">150+ young artists discovered their voice</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT / FOUNDER ── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="founder-card">
+          <img src="data:image/png;base64,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" style="width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:top center;border:3px solid rgba(255,255,255,0.45);margin-bottom:20px;display:block;box-shadow:0 4px 16px rgba(0,0,0,0.25);" alt="Scola Sumary, Founder"/>
+          <h3>Scola Sumary</h3>
+          <div class="role">Founder & Executive Director</div>
+          <p>
+            Born and raised in Tanzania, Scola witnessed firsthand how poverty, inequality, and lack of opportunity silenced the voices of young people and women in her community. Fuelled by compassion and a burning belief that change is possible, she founded Champions for Changes to ensure that every person has the chance to reach their full potential.
+          </p>
+          <p style="margin-top:14px;font-size:.88rem;color:rgba(255,255,255,0.7);">
+            "I started this organisation because I refused to accept that where you are born should determine how far you go."
+          </p>
+        </div>
+        <div class="about-float-badge">
+          <div class="num">2020</div>
+          <div class="lbl">Founded</div>
+        </div>
+      </div>
+
+      <div class="about-text reveal">
+        <div class="section-label">Our Story</div>
+        <h2 class="section-title">Built on Compassion. Driven by Purpose.</h2>
+        <p style="font-size:.98rem;color:var(--text-muted);line-height:1.75;margin-bottom:24px;">
+          Champions for Changes was founded in 2019 in Arusha, Tanzania, with a simple but powerful idea: communities thrive when individuals within them are lifted up with dignity, opportunity, and support.
+        </p>
+        <p style="font-size:.98rem;color:var(--text-muted);line-height:1.75;margin-bottom:32px;">
+          From a small community initiative, we have grown into a recognised NGO operating across 6 communities in northern Tanzania, running programs in education, women's empowerment, healthcare, and youth development.
+        </p>
+        <div class="values-list">
+          <div class="value-item">
+            <div class="value-icon">❤️</div>
+            <div class="value-text">
+              <strong>Compassion First</strong>
+              <span>Every action we take is rooted in genuine care for the people we serve.</span>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">🔬</div>
+            <div class="value-text">
+              <strong>Dignity & Respect</strong>
+              <span>We treat every individual as a full human being with unlimited potential.</span>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">🌱</div>
+            <div class="value-text">
+              <strong>Sustainable Change</strong>
+              <span>We invest in long-term transformation, not short-term fixes.</span>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">🤲</div>
+            <div class="value-text">
+              <strong>Community-Led</strong>
+              <span>Communities know what they need — we listen, support and amplify.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials">
+  <div class="testimonials-header reveal">
+    <div class="section-label">Stories of Change</div>
+    <h2 class="section-title" style="color:#fff;">Voices from the Community</h2>
+  </div>
+  <div class="testimonials-grid container">
+    <div class="testimonial-card reveal">
+      <div class="star-row">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">Champions for Changes paid my school fees when my family could not afford it. Today I am in secondary school and dreaming of becoming a doctor. Scola and her team believed in me when I stopped believing in myself.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">A</div>
+        <div class="author-info">
+          <strong>Amina J., 16</strong>
+          <span>Back to School Beneficiary, Arusha</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="star-row">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">The Women Rise program changed my life. I learned how to run a small business, got a micro-loan, and now I have my own tailoring shop. I am feeding my children and sending them to school on my own income.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">F</div>
+        <div class="author-info">
+          <strong>Fatuma M., 34</strong>
+          <span>Women Rise Graduate, Monduli</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="star-row">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">As a volunteer with CFC, I have seen things that break your heart — and things that restore it. This organisation does not just help people survive; it helps them rise. Scola leads with her whole soul.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">D</div>
+        <div class="author-info">
+          <strong>David N.</strong>
+          <span>Program Volunteer, 3 years</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GET INVOLVED ── -->
+<section id="get-involved">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 12px;">
+      <div class="section-label">Join The Movement</div>
+      <h2 class="section-title">Be a Champion for Change</h2>
+      <p class="section-subtitle" style="margin:0 auto;">There are many ways to stand with us. Choose the path that speaks to your heart.</p>
+    </div>
+    <div class="involved-grid">
+      <div class="involved-card donate reveal">
+        <div class="card-icon">❤️</div>
+        <h3>Donate</h3>
+        <p>Your donation directly funds school fees, health camps, meals, and empowerment programs. Even a small amount creates a ripple of change that reaches far.</p>
+        <a href="#donate-cta" class="btn-white">Give Now →</a>
+      </div>
+      <div class="involved-card volunteer reveal">
+        <div class="card-icon">🙋</div>
+        <h3>Volunteer</h3>
+        <p style="color:var(--text-muted);">Bring your skills, time, and energy to our programs. We welcome teachers, doctors, creatives, builders — anyone with a willing heart.</p>
+        <a href="#contact" class="btn-gold">Apply to Volunteer →</a>
+      </div>
+      <div class="involved-card partner reveal">
+        <div class="card-icon">🤝</div>
+        <h3>Partner With Us</h3>
+        <p>Corporate sponsors, NGOs, and institutions can partner with Champions for Changes to co-create programs and reach more communities together.</p>
+        <a href="#contact" class="btn-white">Become a Partner →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DONATE CTA ── -->
+<section id="donate-cta">
+  <div class="donate-inner container">
+    <div class="section-label" style="color:rgba(255,255,255,0.7);">Make a Difference Today</div>
+    <h2>Your Kindness Can Change a Life</h2>
+    <p>Every shilling. Every dollar. Every euro. It goes directly to a child's education, a woman's freedom, a family's next meal. Choose an amount and be a champion.</p>
+    <div class="donate-amounts">
+      <button class="amount-btn" onclick="selectAmount(this)">$10</button>
+      <button class="amount-btn active" onclick="selectAmount(this)">$25</button>
+      <button class="amount-btn" onclick="selectAmount(this)">$50</button>
+      <button class="amount-btn" onclick="selectAmount(this)">$100</button>
+      <button class="amount-btn" onclick="selectAmount(this)">Other</button>
+    </div>
+    <a href="#contact" class="btn-white" style="font-size:1rem;padding:14px 36px;">Donate Securely Now ❤️</a>
+    <p style="margin-top:20px;font-size:.8rem;color:rgba(255,255,255,0.55);">
+      🔒 All donations are secure. 100% goes to programs. Receipts provided.
+    </p>
+  </div>
+</section>
+
+<!-- ── NEWSLETTER ── -->
+<section id="newsletter">
+  <div class="container">
+    <div class="newsletter-inner reveal">
+      <div class="section-label">Stay Connected</div>
+      <h2 class="section-title">Join Our Community</h2>
+      <p style="color:var(--text-muted);line-height:1.7;margin-bottom:8px;">
+        Get inspiring stories, program updates, and ways to help delivered straight to your inbox. No spam — just real impact.
+      </p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your email address..." id="newsletterEmail"/>
+        <button onclick="subscribeNewsletter()">Subscribe →</button>
+      </div>
+      <p id="newsletter-msg" style="margin-top:14px;font-size:.85rem;color:var(--gold);display:none;">🎉 Thank you! You're now part of the Champions community.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:48px;">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">We'd Love to Hear From You</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>Contact Champions for Changes</h3>
+        <p>Whether you want to volunteer, partner, donate, or simply learn more — our doors and hearts are open. Reach out and let's create change together.</p>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-text">
+            <strong>Location</strong>
+            <span>Arusha, Tanzania, East Africa</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-text">
+            <strong>Email</strong>
+            <span>info@championsforchanges.org</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-text">
+            <strong>Phone / WhatsApp</strong>
+            <span> +255 782 560 154</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div class="contact-text">
+            <strong>Office Hours</strong>
+            <span>Mon–Fri: 8:00 AM – 5:00 PM (EAT)</span>
+          </div>
+        </div>
+        <div class="social-row">
+        <a href="https://www.instagram.com/champions_for_changes/" target="_blank" class="social-btn instagram" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        <a href="#" class="social-btn facebook" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.887v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg></a>
+        <a href="#" class="social-btn twitter" title="X / Twitter"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="https://wa.me/255782560154" class="social-btn whatsapp" title="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="#" class="social-btn youtube" title="YouTube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3 style="font-size:1.3rem;color:var(--brown);margin-bottom:24px;">Send Us a Message</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name *</label>
+            <input type="text" placeholder="Amina"/>
+          </div>
+          <div class="form-group">
+            <label>Last Name *</label>
+            <input type="text" placeholder="Juma"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" placeholder="amina@example.com"/>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <select>
+            <option>I want to Volunteer</option>
+            <option>Partnership Inquiry</option>
+            <option>Donation Question</option>
+            <option>Media / Press</option>
+            <option>General Question</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Message *</label>
+          <textarea placeholder="Tell us how you'd like to get involved or how we can help..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center;" onclick="submitForm(this)">Send Message ✉️</button>
+        <p id="form-success" style="display:none;margin-top:14px;font-size:.88rem;color:var(--accent-teal);text-align:center;">✅ Message sent! We'll get back to you within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo-text">Champions <span>for Changes</span></div>
+      <p>A youth-led NGO transforming lives in Arusha, Tanzania, and beyond. Founded with love by Scola Sumary, powered by a community of champions.</p>
+      <div class="social-row">
+        <a href="https://www.instagram.com/champions_for_changes/" target="_blank" class="social-btn instagram" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        <a href="#" class="social-btn facebook" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.887v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg></a>
+        <a href="#" class="social-btn twitter" title="X / Twitter"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="https://wa.me/255782560154" class="social-btn whatsapp" title="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul class="footer-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#programs">Our Programs</a></li>
+        <li><a href="#get-involved">Get Involved</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul class="footer-links">
+        <li><a href="#programs">Back to School</a></li>
+        <li><a href="#programs">Women Rise</a></li>
+        <li><a href="#programs">Health Outreach</a></li>
+        <li><a href="#programs">Youth Champions</a></li>
+        <li><a href="#programs">Hunger Relief</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item">📍 Arusha, Tanzania</div>
+      <div class="footer-contact-item">📧 info@championsforchanges.org</div>
+      <div class="footer-contact-item">📱 +255 782 560 154</div>
+      <a href="#donate-cta" class="btn-primary" style="margin-top:16px;font-size:.85rem;padding:11px 22px;">❤️ Donate Now</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Champions for Changes. All rights reserved. Founded by <a href="https://www.instagram.com/official.scholar/#">Scola Sumary</a>.</p>
+    <p>Built with ❤️ for a better Tanzania.</p>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // ── NAV SCROLL ──
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    const scrollTop = document.getElementById('scrollTop');
+    if (window.scrollY > 60) {
+      nav.classList.add('scrolled');
+      scrollTop.classList.add('visible');
+    } else {
+      nav.classList.remove('scrolled');
+      scrollTop.classList.remove('visible');
+    }
+    // active nav link
+    const sections = ['hero','about','programs','get-involved','contact'];
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 100) current = id;
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#'+current);
+    });
+  });
+
+  // ── MOBILE MENU ──
+  function toggleMenu() {
+    const nav = document.getElementById('mobileNav');
+    nav.classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileNav').classList.remove('open');
+  }
+
+  // ── REVEAL ON SCROLL ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── TABS ──
+  function switchTab(cat) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.program-card').forEach(c => {
+      if (cat === 'all' || c.dataset.cat === cat) {
+        c.style.display = 'flex';
+        c.style.flexDirection = 'column';
+      } else {
+        c.style.display = 'none';
+      }
+    });
+  }
+
+  // ── DONATE AMOUNTS ──
+  function selectAmount(btn) {
+    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // ── NEWSLETTER ──
+  function subscribeNewsletter() {
+    const email = document.getElementById('newsletterEmail').value;
+    if (email && email.includes('@')) {
+      document.getElementById('newsletter-msg').style.display = 'block';
+      document.getElementById('newsletterEmail').value = '';
+    }
+  }
+
+  // ── FORM SUBMIT ──
+  function submitForm(btn) {
+    btn.textContent = 'Sending...';
+    btn.style.opacity = '.7';
+    setTimeout(() => {
+      btn.textContent = '✅ Message Sent!';
+      btn.style.opacity = '1';
+      document.getElementById('form-success').style.display = 'block';
+    }, 1200);
+  }
+
+  // ── SMOOTH ANCHOR SCROLL ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 77;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
